@@ -148,12 +148,22 @@ public class GridSystemVisual : MonoBehaviour
 					GridVisualType.RedSoft);
 					
 				break;
-				
-            /*case ShootAction shootAction:
+
+            case ExplosionAction explosionAction:
                 gridVisualType = GridVisualType.Red;
 
+                ShowGridPositionRange(
+					selectedUnit.GetGridPosition(),
+					explosionAction.GetMaxExplosionDistance(),
+					GridVisualType.RedSoft);
+					
+				break;
+				
+            case ShootAction shootAction:
+                gridVisualType = GridVisualType.Green;
+
                 ShowGridPositionRange(selectedUnit.GetGridPosition(), shootAction.GetMaxShootDistance(), GridVisualType.RedSoft);
-                break;*/
+                break;
         }
 
         ShowGridPositionList(
