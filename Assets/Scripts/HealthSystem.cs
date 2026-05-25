@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     public event EventHandler OnDead;
     public event EventHandler OnDamaged;
 
+    public event EventHandler OnHealthCured;
+
 
     [SerializeField] private int health = 100;
     private int healthMax;
@@ -35,7 +37,19 @@ public class HealthSystem : MonoBehaviour
             Die();
         }
 
-        Debug.Log(health);
+        // Debug.Log(health);
+    }
+
+    public void Cure(int cureAmount)
+    {
+        //Debug.Log("estamos curando");
+        int healthBefore = cureAmount + health;
+
+        if(healthBefore >= healthMax) health = healthMax;
+        else health = healthBefore;
+
+        //Debug.Log("curamos " + cureAmount + " puntos de vida, ahora tenemos " + health);
+        OnHealthCured?.Invoke(this, EventArgs.Empty);
     }
 
     private void Die()

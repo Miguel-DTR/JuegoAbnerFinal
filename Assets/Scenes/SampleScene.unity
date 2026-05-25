@@ -1000,7 +1000,7 @@ PrefabInstance:
     - target: {fileID: 372351251089215277, guid: 857d6eefb4bab8247894b950c2208cd5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 372351251089215277, guid: 857d6eefb4bab8247894b950c2208cd5,
         type: 3}
@@ -1454,7 +1454,7 @@ PrefabInstance:
     - target: {fileID: 7029309309820256007, guid: e94ed6c18d89e864eb44950f64494d8e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1602,6 +1602,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyCamicase
+      objectReference: {fileID: 0}
+    - target: {fileID: 141895911787112606, guid: c6212912978ca5643aadec5f09905879,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8314720997421568991, guid: c6212912978ca5643aadec5f09905879,
         type: 3}

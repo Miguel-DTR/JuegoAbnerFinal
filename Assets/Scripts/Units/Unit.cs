@@ -152,6 +152,12 @@ public class Unit : MonoBehaviour
         healthSystem.Damage(damageAmount);
     }
 
+    public void Cure(int cureAmount)
+    {
+        healthSystem.Cure(cureAmount);
+        //Debug.Log("curamos en unit " + cureAmount);
+    }
+
     
     private void HealthSystem_OnDead(object sender, EventArgs e)
     {
