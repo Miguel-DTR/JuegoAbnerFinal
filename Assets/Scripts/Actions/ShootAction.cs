@@ -175,7 +175,6 @@ public class ShootAction : BaseAction
         stateTimer = aimingStateTime;
 
         canShootBullet = true;
-
         ActionStart(onActionComplete);
     }
 
@@ -191,6 +190,16 @@ public class ShootAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
+        if(IsEnemyCamicase())
+        {
+            return new EnemyAIAction
+            {
+                gridPosition = gridPosition,
+                actionValue = 0,
+            };
+        }
+        else
+        {
         Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
         
         return new EnemyAIAction
@@ -198,11 +207,25 @@ public class ShootAction : BaseAction
             gridPosition = gridPosition,
             actionValue = 100 + Mathf.RoundToInt((1 - targetUnit.GetHealthNormalized()) * 100f),
         };
+        }
     }
 
     public int GetTargetCountAtPosition(GridPosition gridPosition)
     {
         return GetValidActionGridPositionList(gridPosition).Count;
+    }
+
+    private bool IsEnemyCamicase()
+    {
+        if(unit.GetAction<ExplosionAction>() != null) return true;
+        else return false;
+
+    }
+
+    private bool IsEnemySword()
+    {
+        if(unit.GetAction<SwordAction>() != null) return true;
+        else return false;
     }
 
 }

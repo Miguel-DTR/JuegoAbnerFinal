@@ -96,11 +96,13 @@ public class ExplosionAction : BaseAction
                         }
 
                         unitToDamage.Damage(explosionDamage);
+                        Debug.Log("Explotamos");
                     }
                 }
 
                 OnAnyExplosionHit?.Invoke(this, EventArgs.Empty);
                 healthSystem.Damage(explosionDamageToSelf);
+                UnitActionSystem.Instance.ClearSelectedUnit(); //poner el personaje que sigue
                 break;
 
             case State.AfterExplosion:
@@ -117,10 +119,12 @@ public class ExplosionAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
+        Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
+        
         return new EnemyAIAction
         {
             gridPosition = gridPosition,
-            actionValue = 180,
+            actionValue = 210,
         };
     }
 

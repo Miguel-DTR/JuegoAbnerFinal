@@ -174,4 +174,9 @@ public class Unit : MonoBehaviour
         return healthSystem.GetHealthNormalized();
     }
 
+    public int GetHealth()
+    {
+        return healthSystem.GetHealth();
+    }
+
 }

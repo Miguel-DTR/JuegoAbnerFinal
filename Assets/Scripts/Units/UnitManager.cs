@@ -81,4 +81,15 @@ public class UnitManager : MonoBehaviour
         return enemyUnitList;
     }
 
+    public Unit GetFirstFriendlyUnit()
+    {
+        if (friendlyUnitList.Count > 0)
+        {
+            return friendlyUnitList[0];
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

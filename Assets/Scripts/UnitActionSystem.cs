@@ -135,9 +135,10 @@ public class UnitActionSystem : MonoBehaviour
     private void SetSelectedUnit(Unit unit)
     {
         selectedUnit = unit;
+        //Debug.Log("Seleccionamos unidad nueva");
 
 		// Se selecciona una acción por default
-        SetSelectedAction(unit.GetAction<MoveAction>());
+        SetSelectedAction(unit.GetAction<HealthAction>());
 		//SetSelectedAction(unit.GetAction<MoveAction>());
 
         OnSelectedUnitChanged?.Invoke(this, EventArgs.Empty);
@@ -158,6 +159,12 @@ public class UnitActionSystem : MonoBehaviour
     public BaseAction GetSelectedAction()
     {
         return selectedAction;
+    }
+
+    public void ClearSelectedUnit()
+    {
+        ClearBusy();
+        SetSelectedUnit(UnitManager.Instance.GetFirstFriendlyUnit());
     }
 
 }

@@ -41,7 +41,7 @@ public class MoveAction : BaseAction
             if (currentPositionIndex >= positionList.Count)
             {
                 OnStopMoving?.Invoke(this, EventArgs.Empty);
-
+                Debug.Log("Detenemos el movimiento");
                 ActionComplete();
             }
         }

@@ -63,7 +63,7 @@ public class HealthAction : BaseAction
                 stateTimer = afterHitStateTime;
 				
                 targetUnit.Cure(healthCure);
-                //Debug.Log("activamos la cura");
+                Debug.Log("activamos la cura");
 				
                 OnAnyHealthAction?.Invoke(this, EventArgs.Empty);
                 break;
@@ -81,10 +81,11 @@ public class HealthAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
+        Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
         return new EnemyAIAction
         {
             gridPosition = gridPosition,
-            actionValue = 200,
+            actionValue = 200 - (targetUnit.GetHealth() * 2),
         };
     }
 

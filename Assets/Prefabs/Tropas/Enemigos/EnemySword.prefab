@@ -72,5 +72,29 @@ PrefabInstance:
     - {fileID: 3277732003823462318, guid: e94ed6c18d89e864eb44950f64494d8e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7029309309820256007, guid: e94ed6c18d89e864eb44950f64494d8e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1641740139261335172}
   m_SourcePrefab: {fileID: 100100000, guid: e94ed6c18d89e864eb44950f64494d8e, type: 3}
+--- !u!1 &6027190591700155741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7029309309820256007, guid: e94ed6c18d89e864eb44950f64494d8e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3614699984201679450}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1641740139261335172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027190591700155741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c1e7a3bd2465b45953635c41d28006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCure: 50
+  maxHealthDistance: 0
