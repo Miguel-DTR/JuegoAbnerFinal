@@ -161,10 +161,16 @@ public class UnitActionSystem : MonoBehaviour
         return selectedAction;
     }
 
-    public void ClearSelectedUnit()
+    public void ClearSelectedFriendUnit()
     {
         ClearBusy();
         SetSelectedUnit(UnitManager.Instance.GetFirstFriendlyUnit());
+    }
+
+    public void ClearSelectedEnemyUnit()
+    {
+        UnitManager.Instance.GetFirstEnemyUnit();
+        Debug.Log("limpiamos el select");
     }
 
 }

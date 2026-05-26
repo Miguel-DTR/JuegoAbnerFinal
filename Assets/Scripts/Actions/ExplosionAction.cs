@@ -102,7 +102,17 @@ public class ExplosionAction : BaseAction
 
                 OnAnyExplosionHit?.Invoke(this, EventArgs.Empty);
                 healthSystem.Damage(explosionDamageToSelf);
-                UnitActionSystem.Instance.ClearSelectedUnit(); //poner el personaje que sigue
+                if(unit.IsEnemy())
+                {
+                    UnitActionSystem.Instance.ClearSelectedEnemyUnit();
+                    Debug.Log("mandamos el enemy");
+                }
+                else
+                {
+                    UnitActionSystem.Instance.ClearSelectedFriendUnit(); //poner el personaje que sigue
+                    Debug.Log("mandamos el friend");
+                }
+                
                 break;
 
             case State.AfterExplosion:

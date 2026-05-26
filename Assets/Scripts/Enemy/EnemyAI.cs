@@ -75,7 +75,7 @@ public class EnemyAI : MonoBehaviour
     {
         foreach (Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
         {
-            if (TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
+            if (TryTakeEnemyAccionAIAction(enemyUnit, onEnemyAIActionComplete))
             {
                 return true;
             }
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
 
-    private bool TryTakeEnemyAIAction(Unit enemyUnit, Action onEnemyAIActionComplete)
+    private bool TryTakeEnemyAccionAIAction(Unit enemyUnit, Action onEnemyAIActionComplete) //agregue el accion al nombre de la funcion
     {
         EnemyAIAction bestEnemyAIAction = null;
         BaseAction bestBaseAction = null;
@@ -123,6 +123,12 @@ public class EnemyAI : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void BuscarUnEnemyNuevo()
+    {
+        SetStateTakingTurn();
+        Debug.Log("buscamos un enemigos nuevo");
     }
 
 }

@@ -8,6 +8,10 @@ public class UnitManager : MonoBehaviour
 
     public static UnitManager Instance { get; private set; }
 
+    [SerializeField] EnemyAI enemyAi;
+    [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject winPanel;
+
 
     private List<Unit> unitList;
     private List<Unit> friendlyUnitList;
@@ -59,10 +63,18 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy())
         {
             enemyUnitList.Remove(unit);
+            if(IsWin())
+            {
+                winPanel.SetActive(true);
+            }
         }
         else
         {
             friendlyUnitList.Remove(unit);
+            if(IsGameOver())
+            {
+                gameOverPanel.SetActive(true);
+            }
         }
     }
 
@@ -92,4 +104,32 @@ public class UnitManager : MonoBehaviour
             return null;
         }
     }
+
+    public void GetFirstEnemyUnit()
+    {
+        if (enemyUnitList.Count > 0)
+        {
+            enemyAi.BuscarUnEnemyNuevo();
+        }
+    }
+
+    private bool IsGameOver()
+    {
+        if(friendlyUnitList.Count <= 0)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    private bool IsWin()
+    {
+        if(enemyUnitList.Count <= 0)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+
 }
