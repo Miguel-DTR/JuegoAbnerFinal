@@ -18,7 +18,7 @@ public class UnitActionSystem : MonoBehaviour
 
     [SerializeField] private Unit selectedUnit;
     [SerializeField] private LayerMask unitLayerMask;
-
+    [SerializeField] private RectTransform uiBlockZone;
     private BaseAction selectedAction;
     private bool isBusy;
 
@@ -46,15 +46,17 @@ public class UnitActionSystem : MonoBehaviour
             return;
         }
 
-        /*if (!TurnSystem.Instance.IsPlayerTurn())
+        if (!TurnSystem.Instance.IsPlayerTurn())
         {
             return;
-        }*/
+        }
 
-        /*if (EventSystem.current.IsPointerOverGameObject())
+         if (RectTransformUtility.RectangleContainsScreenPoint(
+            uiBlockZone,
+            Input.mousePosition))
         {
             return;
-        }*/
+        }
 
         if (TryHandleUnitSelection())
         {

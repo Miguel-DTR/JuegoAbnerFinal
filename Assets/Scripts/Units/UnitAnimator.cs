@@ -20,11 +20,12 @@ public class UnitAnimator : MonoBehaviour
             moveAction.OnStartMoving += MoveAction_OnStartMoving;
             moveAction.OnStopMoving += MoveAction_OnStopMoving;
         }
-/*
-        if (TryGetComponent<ShootAction>(out ShootAction shootAction))
+
+        if (TryGetComponent<ShootAction>(out ShootAction shootAction)) //disparo
         {
             shootAction.OnShoot += ShootAction_OnShoot;
-        }*/
+        }
+
 		if(TryGetComponent<SwordAction>(
 			out SwordAction swordAction))
 		{
@@ -34,7 +35,47 @@ public class UnitAnimator : MonoBehaviour
 			swordAction.OnSwordActionCompleted +=
 				SwordActionCompletedFunction;
 		}
+
+        if(TryGetComponent<HealthAction>(out HealthAction healthAction)) //salud
+        {
+            healthAction.OnHealthActionStarted += HealthAction_OnCure;
+        }
+
+        if(TryGetComponent<ExplosionAction>(out ExplosionAction explosionAction)) //explosion
+        {
+            explosionAction.OnExplosionActionStarted += ExplosionAction_OnExplosion;
+        }
+
+        if(TryGetComponent<HealthSystem>(out HealthSystem healthSystem)) //muerte
+        {
+            healthSystem.OnDead += HealthAction_OnDeath;
+            healthSystem.OnDamaged += HealthAction_OnDamage;
+        }
     }
+    //daño
+    private void HealthAction_OnDamage(object sender, EventArgs e)
+    {
+        animator.SetTrigger("damage");
+    }
+
+    //muerte
+    private void HealthAction_OnDeath(object sender, EventArgs e)
+    {
+        animator.SetTrigger("death");
+    }
+
+    //explosion
+    private void ExplosionAction_OnExplosion(object sender, EventArgs e)
+    {
+        animator.SetTrigger("explosion");
+
+    }
+    //salud
+    private void HealthAction_OnCure(object sender, EventArgs e)
+    {
+        animator.SetTrigger("curar");
+    }
+    //muerte
 	
 	private void SwordActionStartedFunction(
 		object sender, EventArgs e)
@@ -63,7 +104,7 @@ public class UnitAnimator : MonoBehaviour
     {
         animator.SetBool("IsWalking", false);
     }
-/*
+
     private void ShootAction_OnShoot(object sender, ShootAction.OnShootEventArgs e)
     {
         animator.SetTrigger("Shoot");
@@ -79,5 +120,5 @@ public class UnitAnimator : MonoBehaviour
 
         bulletProjectile.Setup(targetUnitShootAtPosition);
     }
-*/
+
 }

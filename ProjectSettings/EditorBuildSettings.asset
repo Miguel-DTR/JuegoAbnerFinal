@@ -6,6 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MENU.unity
+    guid: e23d15a67b7d3834dbf02b813865219b
+  - enabled: 1
+    path: Assets/Scenes/CINEMATICA_1.unity
+    guid: 127cd1ce7ea2ffe47b6af45e8b75d19d
+  - enabled: 1
+    path: Assets/Scenes/CINEMATICA_ANTES.unity
+    guid: 9982f339d598b65459e1fc0d6a04773e
+  - enabled: 1
+    path: Assets/Scenes/NIVEL_1.unity
+    guid: c17830afa0d51864a8a2b2dcc5384887
+  - enabled: 1
+    path: Assets/Scenes/CINEMATICA_2.unity
+    guid: b1132d510df568d4e8299d68d4009699
+  - enabled: 1
+    path: Assets/Scenes/NIVEL_2.unity
+    guid: edf7e58e4dfa02c4da76ce5ebb09f39b
+  - enabled: 1
+    path: Assets/Scenes/CINEMATICA_3.unity
+    guid: b22efd2934492c24eb9fa0835fce6127
+  - enabled: 1
+    path: Assets/Scenes/NIVEL_3.unity
+    guid: 51b738db8c2335d4296db7d1611261cc
+  - enabled: 1
+    path: Assets/Scenes/VICTORIA_3.unity
+    guid: 581f74125afca3945862409f9af82a4a
+  - enabled: 1
+    path: Assets/Scenes/DERROTA.unity
+    guid: 74e186fa2388c8d4786028a1defe2917
+  - enabled: 1
+    path: Assets/Scenes/CREDITOS.unity
+    guid: 25f5facf044c30842b5c741754e916ea
+  - enabled: 0
     path: Assets/Scenes/NIVEL_0.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

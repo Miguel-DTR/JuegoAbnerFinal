@@ -11,12 +11,16 @@ public class TurnSystemUI : MonoBehaviour
     [SerializeField] private Button endTurnBtn;
     [SerializeField] private TextMeshProUGUI turnNumberText;
     [SerializeField] private GameObject enemyTurnVisualGameObject;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip endTurnAudio;
+    [SerializeField] private AudioClip changeTurnAudio;
 
     private void Start()
     {
         endTurnBtn.onClick.AddListener(() =>
         {
             TurnSystem.Instance.NextTurn();
+            audioSource.PlayOneShot(endTurnAudio);
         });
 
         TurnSystem.Instance.OnTurnChanged += TurnSystem_OnTurnChanged;
@@ -31,6 +35,7 @@ public class TurnSystemUI : MonoBehaviour
         UpdateTurnText();
         UpdateEnemyTurnVisual();
         UpdateEndTurnButtonVisibility();
+        audioSource.PlayOneShot(changeTurnAudio);
     }
 
     private void UpdateTurnText()

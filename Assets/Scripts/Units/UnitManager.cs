@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UnitManager : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class UnitManager : MonoBehaviour
 
     [SerializeField] EnemyAI enemyAi;
     [SerializeField] GameObject gameOverPanel;
-    [SerializeField] GameObject winPanel;
-
+    //[SerializeField] GameObject winPanel;
+    //[SerializeField] GameObject canvaInterfaz;    
+    [SerializeField] private string perderEscenaName;
+    [SerializeField] private string ganarEscenaName;
 
     private List<Unit> unitList;
     private List<Unit> friendlyUnitList;
@@ -65,7 +68,7 @@ public class UnitManager : MonoBehaviour
             enemyUnitList.Remove(unit);
             if(IsWin())
             {
-                winPanel.SetActive(true);
+                SceneManager.LoadScene(ganarEscenaName);
             }
         }
         else
@@ -73,7 +76,7 @@ public class UnitManager : MonoBehaviour
             friendlyUnitList.Remove(unit);
             if(IsGameOver())
             {
-                gameOverPanel.SetActive(true);
+                SceneManager.LoadScene(perderEscenaName);
             }
         }
     }

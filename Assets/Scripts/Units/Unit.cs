@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class Unit : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Unit : MonoBehaviour
 
 	// variables privadas
     [SerializeField] private bool isEnemy;
+    [SerializeField] private AnimationClip muerteClip;
+    private float muerteClipDuracion;
 	
 	private GridPosition gridPosition;
 	private int actionPoints = ACTION_POINTS_MAX;
@@ -41,6 +44,9 @@ public class Unit : MonoBehaviour
 		
         // Avisamos que una unidad nueva fue creada
 		OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
+
+        //duracion de la animacion de la muerte
+        muerteClipDuracion = muerteClip.length;
 	}
 	
 	void Update()
@@ -161,11 +167,10 @@ public class Unit : MonoBehaviour
     
     private void HealthSystem_OnDead(object sender, EventArgs e)
     {
-        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
 
-        Destroy(gameObject);
+        StartCoroutine(TimeToDestroy());
 
-        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
+  
     }
     
     
@@ -177,6 +182,14 @@ public class Unit : MonoBehaviour
     public int GetHealth()
     {
         return healthSystem.GetHealth();
+    }
+
+    private IEnumerator TimeToDestroy()
+    {
+        yield return new WaitForSeconds(muerteClipDuracion);
+        Destroy(gameObject);
+        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
 }
